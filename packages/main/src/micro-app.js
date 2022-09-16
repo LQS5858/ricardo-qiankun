@@ -5,7 +5,8 @@ const microApps = [
   {
     name: 'vue3Vite',
     entry: import.meta.env.VITE_SUBAPP_URL,
-    activeRule: '/sub-vue'
+    activeRule: '/sub-vue',
+    container: '#cnbi-viewport'
   }
 ]
 
