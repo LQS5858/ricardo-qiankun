@@ -21,6 +21,7 @@ let instance = null
 let history = null
 
 
+
 function render (props = {}) {
   const { container, onGlobalStateChange, setGlobalState, getGlobalState, routerBase } = props || {}
   history = createWebHistory(qiankunWindow.__POWERED_BY_QIANKUN__ ? routerBase : import.meta.env.BASE_URL)
@@ -31,7 +32,6 @@ function render (props = {}) {
   instance = createApp(App)
   instance.use(router)
   instance.use(pinia)
-
   instance.config.globalProperties.$onGlobalStateChange = onGlobalStateChange
   instance.config.globalProperties.$setGlobalState = setGlobalState
   instance.config.globalProperties.$getGlobalState = getGlobalState

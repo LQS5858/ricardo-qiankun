@@ -3,13 +3,16 @@ import { ref } from 'vue'
 import { getCurrentInstance, computed } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { useQiankun } from '@/stores/modules/qiankunStore'
 
 const { proxy } = getCurrentInstance()
+const useQiankunStore = useQiankun()
 
 let addTest = ref(0)
 
 if (proxy.$isQiankun) {
   proxy.$onGlobalStateChange((newState, prev) => {
+    useQiankunStore.saveQiankunState(newState)
     console.log('子应用监听共享状态变化>>>>', newState, prev)
   })
 }
@@ -19,15 +22,13 @@ const changGlobalStore = () => {
     proxy.$setGlobalState({
       addTest: '888',
     })
-    let text = proxy.$getGlobalState('addTest')
-    addTest.value = text
   }
 }
 </script>
 
 <template>
   <div>我是乾坤子应用</div>
-  <div>子应用显示共享store:{{addTest}}</div>
+  <div>子应用显示共享store:{{useQiankunStore.qiankunState.addTest}}</div>
   <div @click.stop="changGlobalStore">改变父子应用store</div>
   <header>
     <img alt="Vue logo"
