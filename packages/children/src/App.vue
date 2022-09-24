@@ -28,7 +28,7 @@ const changGlobalStore = () => {
 
 <template>
   <div>我是乾坤子应用</div>
-  <div>子应用显示共享store:{{useQiankunStore.qiankunState.addTest}}</div>
+  <div class="text">子应用显示共享store:{{useQiankunStore.qiankunState.addTest}}</div>
   <div @click.stop="changGlobalStore">改变父子应用store</div>
   <header>
     <img alt="Vue logo"
@@ -51,6 +51,9 @@ const changGlobalStore = () => {
 </template>
 
 <style scoped>
+.text {
+  color: red;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;

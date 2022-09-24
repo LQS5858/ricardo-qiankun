@@ -1,55 +1,53 @@
-import { createApp } from 'vue'
-import { registerMicroApps, start, setDefaultMountApp } from 'qiankun'
-import App from './App.vue'
-import router from './router'
-import microApps from './micro-app'
-import pinia from './stores'
-import './assets/main.css'
+import { createApp } from "vue";
+import { registerMicroApps, start, setDefaultMountApp } from "qiankun";
+import App from "./App.vue";
+import router from "./router";
+import microApps from "./micro-app";
+import pinia from "./stores";
+import "./assets/main.css";
 
-const instance = createApp(App)
+const instance = createApp(App);
 
-instance.use(pinia)
-instance.use(router)
+instance.use(pinia);
+instance.use(router);
 
-instance.mount('#app')
+instance.mount("#qiankun-main");
 
 //定义loader方法，loading改变时，将变量赋值给app.vue的data中isLoading
 
 function loader (loading) {
   if (instance.isLoading) {
-    instance.isLoading = loading
+    instance.isLoading = loading;
   }
 }
 
-const apps = microApps.map(item => {
+const apps = microApps.map((item) => {
   return {
     ...item,
-    loader
-  }
-})
+    loader,
+  };
+});
 
 registerMicroApps(apps, {
-  beforeLoad: app => {
+  beforeLoad: (app) => {
     console.log("before load app.name====>>>>>", app.name);
   },
   beforeMount: [
-    app => {
+    (app) => {
       console.log("[LifeCycle] before mount %c%s", "color: green;", app.name);
-    }
+    },
   ],
   afterMount: [
-    app => {
+    (app) => {
       console.log("[LifeCycle] after mount %c%s", "color: green;", app.name);
-    }
+    },
   ],
   afterUnmount: [
-    app => {
+    (app) => {
       console.log("[LifeCycle] after unmount %c%s", "color: green;", app.name);
-    }
-  ]
-})
+    },
+  ],
+});
 
-setDefaultMountApp('/sub-vue')
-start()
-
-
+setDefaultMountApp("/sub-vue");
+start();

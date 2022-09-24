@@ -31,10 +31,12 @@ const pushSub = () => {
 
   <RouterView />
   <div id="cnbi-viewport"></div>
-
 </template>
 
 <style scoped>
+#cnbi-viewport {
+  width: 100vw;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;

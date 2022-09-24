@@ -7,7 +7,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/sub/sub-vue',
+  base: 'http://localhost:7316/sub/sub-vue',
   plugins: [vue(), qiankun('vue3Vite', { useDevMode: true })],
   resolve: {
     alias: {
@@ -15,8 +15,9 @@ export default defineConfig({
     }
   },
   server: {
+    cors: true,
     host: '0.0.0.0',
+    origin: 'http://localhost:7316',
     port: 7316,
-    cors: true
   }
 })

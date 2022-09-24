@@ -15,7 +15,9 @@ const pushSub = () => {
 </script>
 
 <template>
-  <div>父应用显示共享store:{{globalStore.getGlobalState('addTest')}}</div>
+  <div class="text">
+    父应用显示共享store:{{ globalStore.getGlobalState("addTest") }}
+  </div>
   <div @click.stop="pushSub">主应用跳转子应用</div>
   <div @click.stop="changeGlobalStore">改变共享store</div>
   <header>
@@ -31,3 +33,9 @@ const pushSub = () => {
     <TheWelcome />
   </main>
 </template>
+
+<style scoped lang="scss">
+.text {
+  color: blue;
+}
+</style>
