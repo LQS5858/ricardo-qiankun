@@ -16,21 +16,7 @@ const pushSub = () => {
 </script>
 
 <template>
-  <!-- <div>父应用显示共享store:{{globalStore.getGlobalState('addTest')}}</div>
-  <div @click.stop="pushSub">主应用跳转子应用</div>
-  <div @click.stop="changeGlobalStore">改变共享store</div>
-  <header>
-    <img alt="Vue logo"
-         class="logo"
-         src="@/assets/logo.svg"
-         width="125"
-         height="125" />
-
-    我是主应用
-  </header> -->
-
   <RouterView />
-  <div id="cnbi-viewport"></div>
 </template>
 
 <style scoped>
