@@ -1,14 +1,19 @@
 <script setup>
 import { ref } from 'vue'
 import { getCurrentInstance, computed } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import { useQiankun } from '@/stores/modules/qiankunStore'
 
 const { proxy } = getCurrentInstance()
+const router = useRouter()
 const useQiankunStore = useQiankun()
 
 let addTest = ref(0)
+
+const goTo = () => {
+  router.push('/home')
+}
 
 if (proxy.$isQiankun) {
   proxy.$onGlobalStateChange((newState, prev) => {
@@ -30,6 +35,7 @@ const changGlobalStore = () => {
   <div>我是乾坤子应用</div>
   <div class="text">子应用显示共享store:{{useQiankunStore.qiankunState.addTest}}</div>
   <div @click.stop="changGlobalStore">改变父子应用store</div>
+  <div @click.stop="goTo">子应用内部路由跳转</div>
   <header>
     <img alt="Vue logo"
          class="logo"

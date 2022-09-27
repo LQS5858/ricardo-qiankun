@@ -29,9 +29,6 @@ const pushSub = () => {
 
     我是主应用
   </header>
-  <main>
-    <TheWelcome />
-  </main>
 </template>
 
 <style scoped lang="scss">

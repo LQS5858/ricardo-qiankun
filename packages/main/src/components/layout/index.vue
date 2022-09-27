@@ -1,7 +1,9 @@
 <template>
-  <div>头部</div>
-  <div @click.stop="jumpChildren">显示子应用</div>
-  <div @click.stop="back">返回</div>
+  <div class="header-nav">
+    <div @click.stop="jumpChildren">sub-vue</div>
+    <div @click.stop="back">返回</div>
+  </div>
+
   <router-view></router-view>
   <div id="cnbi-viewport"></div>
 </template>
@@ -30,4 +32,14 @@ onMounted(() => {
   mountedQiankun();
 });
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.header-nav {
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
+  div {
+    cursor: pointer;
+    margin-right: 20px;
+  }
+}
+</style>
