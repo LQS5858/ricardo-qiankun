@@ -17,6 +17,7 @@ const pushSub = () => {
 
 <template>
   <RouterView />
+  <div id="bi-viewport"></div>
 </template>
 
 <style scoped>

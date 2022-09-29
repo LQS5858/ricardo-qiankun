@@ -1,6 +1,7 @@
 <template>
   <div class="header-nav">
     <div @click.stop="jumpChildren">sub-vue</div>
+    <div @click.stop="jumpReact">sub-react</div>
     <div @click.stop="back">返回</div>
   </div>
 
@@ -16,6 +17,10 @@ const router = useRouter();
 
 const back = () => {
   router.go(-1);
+};
+
+const jumpReact = () => {
+  router.push("/home/layout/sub-react");
 };
 const jumpChildren = () => {
   router.push("/home/layout/sub-vue");
